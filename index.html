@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EufyMake E1 Ink Cost Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="summary-band" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">EufyMake E1</p>
+          <h1 id="page-title">Ink Cost Calculator</h1>
+        </div>
+        <div class="total-panel" aria-live="polite">
+          <span class="total-label">Total</span>
+          <strong id="totalPrice">¥0</strong>
+          <span id="unitPrice">¥0 per print</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Calculator">
+        <form class="tool-panel" id="calculatorForm">
+          <fieldset class="control-group">
+            <legend>Job</legend>
+            <label class="field compact">
+              <span>Prints</span>
+              <input id="copies" type="number" inputmode="decimal" min="0" step="1" value="1">
+            </label>
+            <div class="white-selector" role="radiogroup" aria-label="White ink type">
+              <label>
+                <input type="radio" name="whiteType" value="standard" checked>
+                <span>W Standard</span>
+              </label>
+              <label>
+                <input type="radio" name="whiteType" value="soft">
+                <span>W Soft</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="control-group">
+            <legend>Estimated Ink</legend>
+            <div class="ink-grid" id="inkInputs"></div>
+          </fieldset>
+
+          <fieldset class="control-group">
+            <legend>Pricing</legend>
+            <div class="price-toolbar">
+              <label class="field">
+                <span>Region</span>
+                <select id="regionPreset"></select>
+              </label>
+              <button class="secondary-button" type="button" id="applyPresetDefaults">Apply preset</button>
+            </div>
+            <div class="price-grid" id="priceInputs"></div>
+          </fieldset>
+        </form>
+
+        <aside class="result-panel" aria-label="Result breakdown">
+          <div class="metric-strip">
+            <div>
+              <span>Total ink</span>
+              <strong id="totalMl">0.00 ml</strong>
+            </div>
+            <div>
+              <span>Cost per ml</span>
+              <strong id="averageCost">¥0.00</strong>
+            </div>
+          </div>
+
+          <div class="breakdown-table" role="table" aria-label="Ink cost breakdown">
+            <div class="breakdown-row breakdown-head" role="row">
+              <span role="columnheader">Ink</span>
+              <span role="columnheader">ml</span>
+              <span role="columnheader">Cost</span>
+            </div>
+            <div id="breakdownRows"></div>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="sampleJob">Sample</button>
+            <button class="secondary-button" type="reset" form="calculatorForm">Reset</button>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
